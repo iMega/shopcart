@@ -1,3 +1,4 @@
+{% raw %}
 <div class="large-3 columns" data-ng-repeat="product in products">
     <figure>
         <img src="{{product.url}}" alt="{{ 'product.title' | angular }}">
@@ -5,3 +6,4 @@
         <button type="button" class="success button ng-cloak"  data-ng-click="add(product)">Add to cart</button>
     </figure>
 </div>
+{% endraw %}
