@@ -1,0 +1,17 @@
+---
+layout: default
+---
+
+<article data-ng-controller="cart">
+    <header><div class="row"><h3>Example Shop</h3></div></header>
+    <section>
+        <div class="row">
+            {% include products/item.html %}
+        </div>
+    </section>
+    <section>
+        <div class="row">
+            {% include cart/index.html %}
+        </div>
+    </section>
+</article>
