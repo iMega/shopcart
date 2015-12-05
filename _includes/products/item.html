@@ -1,7 +1,7 @@
 <div class="large-3 columns" data-ng-repeat="product in products">
     <figure>
         <img src="{{ 'product.url' | angular }}" alt="{{ 'product.title' | angular }}">
-        <figcaption>{{ 'product.title' | angular }}</figcaption>
+        <figcaption ng-bind="product.title">{{ 'product.title' | angular }}</figcaption>
         <button type="button" class="success button ng-cloak"  data-ng-click="add(product)">Add to cart</button>
     </figure>
 </div>
