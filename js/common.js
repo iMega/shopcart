@@ -1,4 +1,6 @@
-var shopcartApp = angular.module('shopcartApp', []);
+var shopcartApp = angular.module('shopcartApp', [], function($interpolateProvider) {
+    $interpolateProvider.startSymbol('{|').endSymbol('|}');
+});
 
 shopcartApp.controller('cart', ['$scope', function($scope) {
     $scope.products = [

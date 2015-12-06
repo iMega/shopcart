@@ -1,6 +1,5 @@
+title: REST API Shopping cart
+
 sass:
   sass_dir: _scss
   style:    :compressed
-
-gems:
-  - jekyll-angular
