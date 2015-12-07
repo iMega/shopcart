@@ -87,7 +87,7 @@ shopcartApp.controller('cart', ['$scope', '$filter', '$http', function($scope, $
     $scope.getItems = function(cartUuid) {
         $http.get('http://demo-teleport.imega.ru/cart/' + cartUuid).then(
             function (res) {
-                $scope.basket = res;
+                $scope.basket = res.data;
             }
         );
     };
