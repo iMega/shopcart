@@ -25,7 +25,7 @@ shopcartApp.filter('getTotal', function() {
     }
 });
 
-shopcartApp.controller('cart', ['$scope', '$filter', function($scope, $filter) {
+shopcartApp.controller('cart', ['$scope', '$filter', '$http', function($scope, $filter, $http) {
     $scope.products = [
         {uuid:'678193d6-4740-4eb8-83b5-84f0a2174cde', title:'Apple iPhone 6S 16Gb', price:749, url:'http://store.storeimages.cdn-apple.com/4861/as-images.apple.com/is/image/AppleInc/aos/published/images/i/ph/iphone6s/plus/iphone6s-plus-silver-select-2015?wid=270&fmt=png-alpha&qlt=95'},
         {uuid:'ebc03f74-8468-4e3c-8481-228a7bc13be8', title:'Apple iPad mini 2 16Gb', price:269, url:'http://store.storeimages.cdn-apple.com/4861/as-images.apple.com/is/image/AppleInc/aos/published/images/i/pa/ipad/mini/ipad-mini-retina-step1-white-2013_GEO_US?wid=270&fmt=png-alpha&qlt=95'},
@@ -82,5 +82,13 @@ shopcartApp.controller('cart', ['$scope', '$filter', function($scope, $filter) {
         });
 
         return uuid;
+    };
+
+    $scope.getItems = function(cartUuid) {
+        $http.get('http://demo-teleport.imega.ru/cart/' + cartUuid).then(
+            function (res) {
+                $scope.basket = res;
+            }
+        );
     };
 }]);
