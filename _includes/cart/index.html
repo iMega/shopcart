@@ -3,15 +3,18 @@
         <div class="row">
             <div class="small-8 columns small-centered">
                 <div>
-                    <div class="small-4 columns text-right">
+                    <div class="small-3 columns text-right">
                         UUID Your ShopCart
                     </div>
-                    <div class="small-4 columns">
-                            <input type="text" placeholder="UUID">
+                    <div class="small-7 columns">
+                            <input type="text" placeholder="UUID" data-ng-model="currentUuid">
                     </div>
-                    <div class="small-4 columns">
-                        <button type="button" class="button ng-cloak" data-ng-click="del(item)">Renew</button>
+                    <div class="small-2 columns">
+                        <button type="button" class="secondary button ng-cloak" data-ng-init="currentUuid = generateUUID()" data-ng-click="currentUuid = generateUUID()">Renew</button>
                     </div>
+                </div>
+                <div class="small-5 columns small-centered">
+                    <button type="button" class="button ng-cloak" data-ng-init="currentUuid = generateUUID()" data-ng-click="currentUuid = generateUUID()">Get cart</button>
                 </div>
             </div>
         </div>
@@ -29,7 +32,7 @@
     </section>
     <footer>
         <div class="row">
-            <p class="text-right">$ {|total|}</p>
+            <p class="text-right">TOTAL: $ {|total|}</p>
         </div>
     </footer>
 </article>
