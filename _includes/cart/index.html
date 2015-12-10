@@ -7,32 +7,32 @@
                         UUID Your ShopCart
                     </div>
                     <div class="small-7 columns">
-                            <input type="text" placeholder="UUID" data-ng-model="currentUuid">
+                            <input type="text" placeholder="UUID" data-ng-model="cart.currentUuid">
                     </div>
                     <div class="small-2 columns">
-                        <button type="button" class="secondary button ng-cloak" data-ng-init="currentUuid = generateUUID()" data-ng-click="currentUuid = generateUUID()">Renew</button>
+                        <button type="button" class="secondary button ng-cloak" data-ng-init="cart.generateUUID()" data-ng-click="cart.generateUUID()">Renew</button>
                     </div>
                 </div>
                 <div class="small-5 columns small-centered">
-                    <button type="button" class="button ng-cloak" data-ng-click="getItems(currentUuid)">Get cart</button>
+                    <button type="button" class="button ng-cloak" data-ng-click="cart.getItems()">Get cart</button>
                 </div>
             </div>
         </div>
     </header>
-    <section data-ng-if="!basket.length">
+    <section data-ng-if="!cart.basket.length">
         <div class="">Not yet!</div>
     </section>
-    <section data-ng-if="basket.length">
-        <div class="row" data-ng-repeat="item in basket">
+    <section data-ng-if="cart.basket.length">
+        <div class="row" data-ng-repeat="item in cart.basket">
             <div class="large-6 columns">{|item.title|}</div>
-            <div class="large-2 columns">{|item.qty|}</div>
+            <div class="large-2 columns"><input type="text" data-ng-model="item.quantity" data-ng-blur="cart.update(item)"></div>
             <div class="large-2 columns">$ {|item.price|}</div>
-            <div class="large-2 columns"><button type="button" class="alert button ng-cloak" data-ng-click="del(item)">Remove</button></div>
+            <div class="large-2 columns"><button type="button" class="alert button ng-cloak" data-ng-click="cart.del(item)">Remove</button></div>
         </div>
     </section>
     <footer>
         <div class="row">
-            <p class="text-right">TOTAL: $ {|total|}</p>
+            <p class="text-right">TOTAL: $ {|cart.getTotal()|}</p>
         </div>
     </footer>
 </article>
