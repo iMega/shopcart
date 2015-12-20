@@ -38,7 +38,7 @@
         <h2>How to use</h2>
         <p>
             $ docker pull imega/cart<br>
-            $ docker run -d imega/cart
+            $ docker run -d --env REDIS_IP={YOUR_REDIS} --env REDIS_PORT=6379 -p 80:8085 imega/cart
         </p>
         <a href="http://imega.club/2015/12/20/docker-image-shopcart/">You can also read the article with examples.</a>
     </div>
