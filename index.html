@@ -6,13 +6,191 @@ title: REST API Shopping cart
 <article data-ng-controller="cartCtrl as cart">
     <header><div class="row"><h3>Example Shop</h3></div></header>
     <section>
-        <div class="row">
+        <div class="row -table">
             {% include products/item.html %}
         </div>
     </section>
     <section>
         <div class="row">
             {% include cart/index.html %}
+        </div>
+    </section>
+</article>
+<article style="background-color: #F7ECDA">
+    <section>
+        <div class="row">
+            <div class="large-4 columns">
+                <h3>Get shopcart contents</h3>
+                <p>Get the details from the basket is easy.</p>
+                <h5>Code status:</h5>
+                <p>200: Ok<br>404: basket is not exist.</p>
+            </div>
+            <div class="large-8 columns">
+                <h4>JS</h4>
+
+<pre>$http.get('http://shopcart.imega.ru/cart/' + this.currentUuid).then(
+    function (res) {
+        console(res.data);
+    }
+);</pre>
+
+                <h4>CURL</h4>
+                <pre>
+<pre>curl http://shopcart.imega.ru/cart/{cartUUID}</pre>
+                </pre>
+            </div>
+        </div>
+    </section>
+</article>
+<article>
+    <section>
+        <div class="row">
+            <div class="large-4 columns">
+                <h3>Get shopcart item</h3>
+                <p>As well as the previous example, further specify the ID of product.</p>
+                <h5>Code status:</h5>
+                <p>200: Ok<br>404: product is not exist.</p>
+            </div>
+            <div class="large-8 columns">
+                <h4>JS</h4>
+
+<pre>$http.get('http://shopcart.imega.ru/cart/' + this.currentUuid + '/' + productUuid).then(
+    function (res) {
+        console(res.data);
+    }
+);</pre>
+
+                <h4>CURL</h4>
+                <pre>
+<pre>curl http://shopcart.imega.ru/cart/{cartUUID}/{productUUID}</pre>
+                </pre>
+            </div>
+        </div>
+    </section>
+</article>
+<article style="background-color: #F7ECDA">
+    <section>
+        <div class="row">
+            <div class="large-4 columns">
+                <h3>Add shopcart item</h3>
+                <p>After creating a product you get HTTP 201 response code and a link to create a product (Header: Location)</p>
+                <h5>Code status:</h5>
+                <p>201: Added product<br>409: Conflict, product is exist.</p>
+            </div>
+            <div class="large-8 columns">
+                <h4>JS</h4>
+
+<pre>$http.put('http://demo-teleport.imega.ru/cart', {
+    price: product.price,
+    title: product.title,
+    preview: product.url,
+    quantity: 1,
+    url: product.url,
+    cart_uuid: this.currentUuid,
+    product_id: product.product_id
+}).then(
+    function (res) {
+        console.log(res);
+    }
+);</pre>
+
+                <h4>CURL</h4>
+                <pre>
+<pre>curl -X PUT -d '"{
+    "cart_uuid": "a727cbf0-d165-4703-bf57-3a8af0b83cbd",
+    "product_id": "6126f97c-29fe-4be4-94df-4e3677d7b129",
+    "title": "iPhone 6S 16Gb",
+    "price": 749,
+    "preview": "http://example.com/url_to_image_preview.png",
+    "quantity": 1,
+    "url": "http://example.com/url_to_page_detail_product"
+}"' http://shopcart.imega.ru/cart/</pre>
+                </pre>
+            </div>
+        </div>
+    </section>
+</article>
+<article>
+    <section>
+        <div class="row">
+            <div class="large-4 columns">
+                <h3>Update shopcart item</h3>
+                <p></p>
+                <h5>Code status:</h5>
+                <p>200: Ok<br>404: product is not exist.</p>
+            </div>
+            <div class="large-8 columns">
+                <h4>JS</h4>
+
+<pre>$http.post(
+    'http://shopcart.imega.ru/cart/',
+    {
+        price: product.price,
+        title: product.title,
+        preview: product.url,
+        quantity: Number(product.quantity),
+        url: product.url,
+        cart_uuid: this.currentUuid,
+        product_id: product.product_id
+    }
+);</pre>
+
+                <h4>CURL</h4>
+                <pre>
+<pre>curl -X POST -d '"{
+    "cart_uuid": "a727cbf0-d165-4703-bf57-3a8af0b83cbd",
+    "product_id": "6126f97c-29fe-4be4-94df-4e3677d7b129",
+    "title": "iPhone 6S 16Gb",
+    "price": 749,
+    "preview": "http://example.com/url_to_image_preview.png",
+    "quantity": 1,
+    "url": "http://example.com/url_to_page_detail_product"
+}"' http://shopcart.imega.ru/cart/</pre>
+                </pre>
+            </div>
+        </div>
+    </section>
+</article>
+<article style="background-color: #F7ECDA">
+    <section>
+        <div class="row">
+            <div class="large-4 columns">
+                <h3>Remove shopcart item</h3>
+                <p></p>
+                <h5>Code status:</h5>
+                <p>200: Ok<br>404: product is not exist.</p>
+            </div>
+            <div class="large-8 columns">
+                <h4>JS</h4>
+<pre>$http.delete('http://shopcart.imega.ru/cart/' + this.currentUuid + '/' + product.product_id);</pre>
+                <h4>CURL</h4>
+                <pre>
+<pre>curl -X DELETE http://shopcart.imega.ru/cart/{cartUUID}/{productUUID}</pre>
+                </pre>
+            </div>
+        </div>
+    </section>
+</article>
+<article>
+    <section>
+        <div class="row">
+            <div class="large-4 columns">
+                <h3>Data format JSON</h3>
+            </div>
+            <div class="large-8 columns"><p></p>
+<pre>
+{
+    "cart_uuid": "a727cbf0-d165-4703-bf57-3a8af0b83cbd",
+    "product_id": "6126f97c-29fe-4be4-94df-4e3677d7b129",
+    "title": "iPhone 6S 16Gb",
+    "price": 749,
+    "preview": "http://example.com/url_to_image_preview.png",
+    "quantity": 1,
+    "url": "http://example.com/url_to_page_detail_product"
+}
+</pre>
+                <p></p>
+            </div>
         </div>
     </section>
 </article>

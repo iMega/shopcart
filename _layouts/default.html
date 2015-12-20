@@ -9,36 +9,66 @@
 <!--[if gt IE 8]><!-->
 <html class="no-js" lang="en" ng-app="shopcartApp"> <!--<![endif]-->
     {% include head.html %}
-<body>
+<>
 <header class="big-poster">
 
 </header>
 
 <article>
     <header>
-        <div class="row"><h1 class="text-center">REST API Shopping cart</h1></div>
+        <div class="row">
+            <h1 class="text-center">REST API Shopping cart</h1>
+            <h3>Logic Shopcart for any platform.</h3>
+        </div>
     </header>
     <section>
         <div class="row">
-            <div class="small-2 large-4 columns">Faster</div>
-            <div class="small-4 large-4 columns">Fool-proof</div>
-            <div class="small-6 large-4 columns">Low-priced</div>
-        </div>
-    </section>
-    <footer>
-        <div class="row">
-            <div class="small-8 columns small-centered text-center">
-                <button type="button" class="button large ng-cloak">Download</button>
+            <div class="small-2 large-4 columns">
+                <div class="small-6 small-centered columns">
+                    <h3 class="with-icon -icon-ninja">Faster</h3>
+                </div>
+                <p>You will use very fastest technologies. This is docker image to run the nginx.</p></div>
+            <div class="small-4 large-4 columns">
+                <div class="small-6 small-centered columns">
+                    <h3 class="with-icon -icon-libra">Fool-proof</h3>
+                </div>
+                <p>Image size: 8 MB.</p></div>
+            <div class="small-6 large-4 columns">
+                <div class="small-6 small-centered columns">
+                    <h3 class="with-icon -icon-eyes">Low-priced</h3>
+                </div>
+                <p>Amazing software for the low price of FREE!</p>
             </div>
         </div>
-    </footer>
+    </section>
+</article>
+<article class="dark">
+    <div class="row">
+        <h2>How to use</h2>
+        <p>
+            $ docker pull imega/cart<br>
+            $ docker run -d imega/cart
+        </p>
+        <a href="http://imega.club/2015/12/20/docker-image-shopcart/">You can also read the article with examples.</a>
+    </div>
 </article>
 
 {{ content }}
 
-<footer>
-    <div class="row">
-
+<footer class="dark">
+    <div class="row -table">
+        <div class="large-4 columns">
+            <h4>© Copyright 2015 iMega - All Rights Reserved</h4>
+        </div>
+        <div class="large-8 columns">
+            <ul class="menu vertical">
+                <li><a href="http://imega.club">iMega's blog</a></li>
+                <li><a href="https://github.com/iMega">iMega’s GitHub account</a></li>
+                <li><a href="https://hub.docker.com/u/imega/">iMega’s Docker Hub account</a></li>
+                <li><a href="https://twitter.com/iMegaCompany">iMega’s Twitter account</a></li>
+                <li><a href="https://www.facebook.com/iMegaCompany">iMega’s Facebook account</a></li>
+            </ul>
+        </div>
     </div>
 </footer>
 
