@@ -62,7 +62,7 @@ shopcartApp.controller('cartCtrl', ['$filter', '$http', function ($filter, $http
                 quantity: 1
             });
         }
-        $http.put('http://demo-teleport.imega.ru/cart', {
+        $http.put('http://shopcart.imega.ru/cart', {
             price: product.price,
             title: product.title,
             preview: product.url,
@@ -80,7 +80,7 @@ shopcartApp.controller('cartCtrl', ['$filter', '$http', function ($filter, $http
     this.del = function (product) {
         var index = $filter('getIndexByUuid')(this.basket, product.product_id);
         this.basket.splice(index, 1);
-        $http.delete('http://demo-teleport.imega.ru/cart/' + this.currentUuid + '/' + product.product_id);
+        $http.delete('http://shopcart.imega.ru/cart/' + this.currentUuid + '/' + product.product_id);
     };
 
     this.getTotal = function(){
@@ -101,7 +101,7 @@ shopcartApp.controller('cartCtrl', ['$filter', '$http', function ($filter, $http
     };
 
     this.getItems = function () {
-        $http.get('http://demo-teleport.imega.ru/cart/' + this.currentUuid).then(
+        $http.get('http://shopcart.imega.ru/cart/' + this.currentUuid).then(
             function (res) {
                 this.basket = res.data;
             }.bind(this)
@@ -110,7 +110,7 @@ shopcartApp.controller('cartCtrl', ['$filter', '$http', function ($filter, $http
 
     this.update = function (product) {
         $http.post(
-            'http://demo-teleport.imega.ru/cart/',
+            'http://shopcart.imega.ru/cart/',
             {
                 price: product.price,
                 title: product.title,
